@@ -16,9 +16,8 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
-    
     <style>
+        /* 干净美观的学术工作台背景 */
         body {
             margin: 0;
             padding: 0;
@@ -43,20 +42,12 @@
 
         /* ========================================== -->
         */
-        df-messenger {
-            z-index: 999;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            
-            /* 强制大窗口渲染 */
-            --df-messenger-chat-window-height: 780px;
-            --df-messenger-chat-window-width: 500px;
-            
-            --df-messenger-font-color: #000;
-            --df-messenger-chat-background: #f3f6fc;
-            --df-messenger-message-user-background: #d3e3fd;
-            --df-messenger-message-bot-background: #fff;
+        :root {
+            --df-messenger-bot-message: #ffffff;
+            --df-messenger-button-titlebar-color: #1a73e8;
+            --df-messenger-chat-background-color: #f3f6fc;
+            --df-messenger-font-color: #000000;
+            --df-messenger-user-message: #d3e3fd;
         }
     </style>
 </head>
@@ -64,20 +55,14 @@
 
     <div class="welcome-card">
         <h1>Li-Bot 理论物理学术工作台</h1>
-        <p>339 篇 MIPT 与统计物理文献仓安全代理已打通</p>
+        <p>339 篇 MIPT 与开放系统文献仓已准备就绪</p>
     </div>
 
-    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v0/df-messenger.js"></script>
     <df-messenger
-      location="us-central1"
-      project-id="li-bot-497010"
+      chat-title="quantum chat"
       agent-id="e377bd57-dc6a-4d0c-b6a5-bf9f9cd81a44"
-      language-code="zh-cn"
-      max-query-length="-1">
-      
-      <df-messenger-chat-window chat-title="quantum chat">
-      </df-messenger-chat-window>
-      
+      language-code="zh-cn">
     </df-messenger>
     <script>
       const observer = new MutationObserver(() => {
