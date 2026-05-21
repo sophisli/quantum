@@ -16,6 +16,8 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    
     <style>
         /* 干净美观的学术工作台背景 */
         body {
@@ -42,12 +44,20 @@
 
         /* ========================================== -->
         */
-        :root {
-            --df-messenger-bot-message: #ffffff;
-            --df-messenger-button-titlebar-color: #1a73e8;
-            --df-messenger-chat-background-color: #f3f6fc;
-            --df-messenger-font-color: #000000;
-            --df-messenger-user-message: #d3e3fd;
+        df-messenger {
+            z-index: 99999;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            
+            /* 科研专用大尺寸：保障长篇文献和主方程推导清晰可读 */
+            --df-messenger-chat-window-height: 750px;
+            --df-messenger-chat-window-width: 480px;
+            
+            --df-messenger-font-color: #000;
+            --df-messenger-chat-background: #f3f6fc;
+            --df-messenger-message-user-background: #d3e3fd;
+            --df-messenger-message-bot-background: #fff;
         }
     </style>
 </head>
@@ -55,14 +65,19 @@
 
     <div class="welcome-card">
         <h1>Li-Bot 理论物理学术工作台</h1>
-        <p>339 篇 MIPT 与开放系统文献仓已准备就绪</p>
+        <p>339 篇 MIPT 与统计物理文献仓安全代理已打通</p>
     </div>
 
-    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v0/df-messenger.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
     <df-messenger
-      chat-title="quantum chat"
+      location="us-central1"
+      project-id="li-bot-497010"
       agent-id="e377bd57-dc6a-4d0c-b6a5-bf9f9cd81a44"
       language-code="zh-cn">
+      
+      <df-messenger-chat-bubble chat-title="quantum chat">
+      </df-messenger-chat-bubble>
+      
     </df-messenger>
     <script>
       const observer = new MutationObserver(() => {
