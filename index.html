@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Info AI Assistant</title>
+    
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    
+    <style>
+        /* 干净美观的学术工作台背景 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 { color: #1a73e8; font-size: 2.2rem; margin-bottom: 10px; }
+        p { color: #5f6368; font-size: 1.05rem; line-height: 1.6; }
+
+        /* ========================================== -->
+        */
+        df-messenger {
+            z-index: 999;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            
+            /* 设定科研专用的大尺寸窗口，读公式不憋屈 */
+            --df-messenger-chat-window-height: 750px;
+            --df-messenger-chat-window-width: 480px;
+            
+            --df-messenger-font-color: #000;
+            --df-messenger-chat-background: #f3f6fc;
+            --df-messenger-message-user-background: #d3e3fd;
+            --df-messenger-message-bot-background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+        <h1>Li-Bot 理论物理学术工作台</h1>
+        <p>339 篇 MIPT 与开放系统文献仓已准备就绪</p>
+    </div>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <df-messenger
+      location="us-central1"
+      project-id="li-bot-497010"
+      agent-id="e377bd57-dc6a-4d0c-b6a5-bf9f9cd81a44"
+      language-code="zh-cn"
+      max-query-length="-1">
+      
+      <df-messenger-chat-window chat-title="quantum chat">
+      </df-messenger-chat-window>
+      
+    </df-messenger>
+    <script>
+      const observer = new MutationObserver(() => {
+        if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+          window.MathJax.typesetPromise();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+</body>
+</html>
